@@ -18,4 +18,6 @@ export default class CoreClient extends EventEmitter {
     get token(): string {
         return this.tkn;
     }
+
+    get ping():number {return this.socket.latency}
 }

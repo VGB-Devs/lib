@@ -8,6 +8,7 @@ export default class WebSocketManager {
     public socket!: WebSocket;
     private interval: number = 0;
     private client: CoreClient;
+    private _ping: number = 0;
     constructor(client: CoreClient) {
         this.client = client;
     }
@@ -25,6 +26,7 @@ export default class WebSocketManager {
                         await this.identify(token);
                         break;
                     case OPCODE.HEARTBEAT_ACK:
+                        this._ping = Date.now() - this._ping
                         break;
                     
                     case OPCODE.INVALID_SESSION:
@@ -42,10 +44,18 @@ export default class WebSocketManager {
     }
 
     heartbeat(ms: number) {
+        // Run when first called
+        this._ping = Date.now()
+        this.socket.send(JSON.stringify(Heartbeat));
+        
         return setInterval(() => {
+            this._ping = Date.now()
             this.socket.send(JSON.stringify(Heartbeat));
         }, ms)
     }
+
+    get latency(): number { return this._ping }
+
     async identify(token: string) {
         Identify.d.token = token;
         return this.socket.send(JSON.stringify(Identify));
