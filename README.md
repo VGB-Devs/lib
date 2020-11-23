@@ -8,7 +8,7 @@ A Discord API wrapper written in pure TypeScript.
 #### Documentation
 
 ##### Quick start
-velocity shares a lot of similar syntax to the [discord.js](https://discord.js.org) library, but with a few variations. 
+velocity shares a lot of similar syntax with the [discord.js](https://discord.js.org) library, but with a few variations. 
 
 > Please note that velocity does not currently support intents yet, we will shortly in the future.
 
@@ -43,7 +43,7 @@ The user class has 5 sub-attributes, which are: id, username, discriminator, ava
 <User>.avatar // Returns the URL for the message creator avatar - String
 <User>.bot // Returns a boolean to determine if the message creator is a bot or a client - Boolean
 ```
-Where the user class is being used: <Message>.author, <Guild>.members (array) (will be deprecated soon) and <Member>.user.
+Where the user class is being used: ```<Message>.author```, ```<Guild>.members``` (array) (will be deprecated soon) and ```<Member>.user```.
     
 ##### Channel Class
 The channel attribute has 18 sub-attributes which store the channel id, type, guildID, position, permissionOverwrites, name, topic, nsfw, lastMessageID, bitrate, user limit, rate limit per user, recipients, icon, owner id, application id, parent id & last pin time stamp.
@@ -70,4 +70,4 @@ The channel attribute has 18 sub-attributes which store the channel id, type, gu
 <Channel>.send() // Takes a string or an object, if you pass an object it will assume you are sending an embed https://leovoel.github.io/embed-visualizer/
 <Channel>.delete() // Deletes the current channel
 ```
-Where the channel class is used: <Message>.channel and <Guild>.channels (array).
+Where the channel class is used: ```<Message>.channel``` and ```<Guild>.channels``` (array).
