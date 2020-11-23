@@ -1,6 +1,7 @@
 import { Client, Message } from '../mod.ts';
+import { token } from './config.ts'
 
-let client = new Client("Nzc3MTExODg0MDI5MjMxMTM1.X6-r1w.jMVEj7_jrB8BkT0RsCpF5S3LKuw");
+let client = new Client(token);
 
 client.start();
 
@@ -9,6 +10,6 @@ client.on("ready", () => {
 })
 client.on("message", async(msg: Message) => {
     if(msg.content === "!ping") {
-        msg.channel.send("Pong!")
+        msg.channel.send("Pong! :ping_pong: " + client.ping + "ms")
     }
 })

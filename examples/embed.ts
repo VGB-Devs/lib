@@ -1,6 +1,7 @@
 import { Client, Message, Embed } from '../mod.ts';
+import { token } from './config.ts'
 
-let client = new Client("Nzc3MTExODg0MDI5MjMxMTM1.X6-r1w.jMVEj7_jrB8BkT0RsCpF5S3LKuw");
+let client = new Client(token);
 
 client.start();
 
