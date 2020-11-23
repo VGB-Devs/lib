@@ -1,4 +1,4 @@
-<img align="center" src="./banner.png" alt="Velocity banner"><br>
+<img align="center" src="./velocity-banner.png" alt="Velocity banner"><br>
 <a align="center" href="https://discord.gg/ypTKwQU"><img src="https://discordapp.com/api/guilds/669092504121114644/widget.png?style=shield" alt="Discord" /></a>
 <hr />
 
