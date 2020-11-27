@@ -1,5 +1,5 @@
 import { Client, Message, Embed } from '../mod.ts';
-import { token } from './config.ts'
+import { token } from './config.example.ts'
 
 let client = new Client(token);
 

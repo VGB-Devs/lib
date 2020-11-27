@@ -6,6 +6,8 @@ import Guild from './lib/structures/Guild.ts';
 import Embed from './lib/structures/Embed.ts';
 import Role from './lib/structures/Role.ts';
 import Member from './lib/structures/Member.ts';
+import Shard from './lib/structures/sharding/Shard.ts';
+import ShardingManager from './lib/structures/sharding/ShardingManager.ts';
 export { 
     Client, 
     Message,
@@ -15,4 +17,6 @@ export {
     Embed,
     Role,
     Member,
+    Shard,
+    ShardingManager,
 };

@@ -80,7 +80,9 @@ export default class Channel {
         });
     
         const json = await response.json();
+        if(json.message! == "You are being rate limited.") return;
         if (!embed) { 
+            console.log(json);
            
             return new Message({ 
                 id: json.id, 

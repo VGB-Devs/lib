@@ -2,7 +2,7 @@ import Channel from './Channel.ts';
 import User from './User.ts';
 import { GuildType } from "./Interfaces.ts";
 import Role from "./Role.ts";
-import { Member } from '../../mod.ts';
+import Member from './Member.ts';
 
 export default class Guild {
     private _id: string;              	                                            //guild id
