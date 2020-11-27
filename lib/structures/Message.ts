@@ -23,57 +23,6 @@ export default class Message {
         this._guild = data.guild;
         this.member!.roles.forEach(role=>this.member!.realRoles.push(this.channel.guild!.roles.filter(x=>x.id === role)[0]));
     }
-    async send(id: string, content: any) {
-        let data:object = {};
-        let embed: Boolean;
-        if (typeof content === 'object' && content !== null) {
-            data = { "embed": content, "tts": false };
-            embed = true;
-        } else {
-            data = { "content": content, "tts": false };
-            embed = false;
-        }
-
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bot ${this._client.token}`
-        }
-        const response = await fetch(`${Constants.API}/channels/${id}/messages`, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(data),
-        });
-    
-        const json = await response.json();
-        if (!embed) { 
-            return new Message({ 
-                id: json.id, 
-                content: content,
-                guild: this.guild,
-                member: {
-                    nickname: this.member!.nickname,
-                    roles: this.member!.roles,
-                    joinedAt: this.member!.joinedAt,
-                    deaf: this.member!.deaf,
-                    mute: this.member!.mute,
-                }, 
-                channel: { 
-                    id: id, 
-                    type: this.channel.type, 
-                    guildId: id, //this is giving it a channel id, gotta fix this
-                    guild: this._client.guilds.find(x=>x.id===id) 
-                }, 
-                author: {
-                    id: json.author.id, 
-                    username: json.author.username, 
-                    discriminator: json.author.discriminator, 
-                    bot: json.author.bot, 
-                    avatar: json.author.avatar
-                }
-            }, this._client)
-        }
-        return json;
-    }
 
     async delete() {
         const headers = {
