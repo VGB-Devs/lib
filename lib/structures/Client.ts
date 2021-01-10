@@ -20,4 +20,20 @@ export default class CoreClient extends EventEmitter {
     }
 
     get ping():number {return this.socket.latency}
+    set presence(data: string[]) {
+        (async() => {
+            await this.socket.socket.send(JSON.stringify({
+                op: 3,
+                d: {
+                    since: 0,
+                    activities: [{
+                        name: data[0],
+                        type: parseInt(data[1]),
+                    }],
+                    status: "online",
+                    afk: false,
+                }   
+            }))
+        })();
+    }
 }

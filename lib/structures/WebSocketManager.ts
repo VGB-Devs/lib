@@ -1,4 +1,3 @@
-import { connectWebSocket, WebSocket } from 'https://cdn.deno.land/std/versions/0.68.0/raw/ws/mod.ts';
 import { Constants, OPCODE } from "../constants/Constants.ts";
 import { Heartbeat, Identify } from '../constants/Payloads.ts';
 import CoreClient from './Client.ts';
@@ -15,9 +14,13 @@ export default class WebSocketManager {
 
     async connect(token: string) {
         try {
-            this.socket = await connectWebSocket(Constants.GATEWAY);
-            for await(const msg of this.socket) {
-                const payload: Payload = JSON.parse(msg.toString());
+            this.socket = new WebSocket(Constants.GATEWAY);
+            this.socket.onmessage = async(msg) => {
+                if(typeof msg.data === 'object' && msg.data.reason) {
+                    console.log(msg.data.reason);
+                    return;
+                }
+                const payload: Payload = JSON.parse(msg.data);
                 const { t: event, s, op, d } = payload;
                 switch(op) {
                     case OPCODE.HELLO:

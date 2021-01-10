@@ -80,7 +80,6 @@ export default class Channel {
         });
     
         const json = await response.json();
-<<<<<<< HEAD
         if(json.message! == "You are being rate limited.") return;
         if (!embed) { 
             console.log(json);
@@ -111,9 +110,6 @@ export default class Channel {
                 }, //DOESN'T WORK ^^ (json doesn't return a member class): gotta fix
             }, this._client);
         }
-        return json
-=======
-            
         return new Message({ 
             id: json.id, 
             content: content, 
@@ -139,7 +135,6 @@ export default class Channel {
                 mute: false,
             }, //DOESN'T WORK ^^ (json doesn't return a member class): gotta fix
         }, this._client);
->>>>>>> 3eb140f2a811cd8375c07010eb6790f9a94bbc57
     }
     async delete() {
         const headers = {

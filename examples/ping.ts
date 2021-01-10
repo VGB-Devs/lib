@@ -7,6 +7,7 @@ client.start();
 
 client.on("ready", () => {
     console.log("Connected to the Discord gateway!")
+    client.presence = ["Bank Account", "0"];
 })
 client.on("message", async(msg: Message) => {
     if(msg.content === "!ping") {
